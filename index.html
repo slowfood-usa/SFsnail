@@ -1,0 +1,127 @@
+<html>
+  <head>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/slowfood-usa/SFsnail@a44583b/styles.css"> -->
+    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.css" rel="stylesheet"/>
+
+  </head>
+
+<body>
+    <!-- <div id="app">
+        <h1>Menu Items</h1>
+        <ul>
+            <li v-for="item in items">
+                <h3>{{ item['fields']['Item'] }}</h3>
+                <p>{{ item['fields']['Description'] }}</p>
+                <p><strong>Price: </strong>${{ item['fields']['Price'] }}</p>
+                <p><strong>Category: </strong>{{ item['fields']['Category'] }}</p>
+                <img :src="item['fields']['Photo'][0]['thumbnails']['large']['url']" alt="" v-if="item['fields']['Photo']" width="150">
+            </li>
+        </ul>            
+    </div> -->
+<div id="vizContainer">
+  <div id = "checkboxcontainer">
+    <h4 class = "checkTitle">Filter by</h4>
+    <h5 class = "checkCat">Type</h5>
+    <input class="check" type="checkbox" id="restaurant" name="restaurant" value="1">
+    <label class="checklabel" for="restaurant"> restaurant</label><br>
+
+    <input class="check" type="checkbox" id="food truck/food stand" name="foodtruckstand" value="1">
+    <label class="checklabel" for="foodtruckstand"> food stand</label><br>
+
+    <input class="check" type="checkbox" id="bar" name="bar" value="1">
+    <label class="checklabel" for="bar"> bar</label><br>
+
+    <input class="check" type="checkbox" id="cafe" name="cafe" value="1">
+    <label class="checklabel" for="cafe"> cafe</label><br>
+
+    <input class="check" type="checkbox" id="farm" name="farm" value="1">
+    <label class="checklabel" for="farm"> farm</label><br>
+
+    <input class="check" type="checkbox" id="vineyard/winery" name="vineyardwinery" value="1">
+    <label class="checklabel" for="vineyardwinery"> vineyard</label><br>
+
+    <input class="check" type="checkbox" id="food producer" name="foodproducer" value="1">
+    <label class="checklabel" for="foodproducer"> food producer</label><br>
+
+    <h5 class = "checkCat">Times</h5>
+    <input class="check" type="checkbox" id="Breakfast" name="breakfast" value="1">
+    <label class="checklabel" for="breakfast"> breakfast</label><br>
+
+    <input class="check" type="checkbox" id="Lunch" name="lunch" value="1">
+    <label class="checklabel" for="lunch"> lunch</label><br>
+
+    <input class="check" type="checkbox" id="Dinner" name="dinner" value="1">
+    <label class="checklabel" for="dinner"> dinner</label><br>
+
+    <input class="check" type="checkbox" id="Late Night" name="latenight" value="1">
+    <label class="checklabel" for="latenight"> late night</label><br>
+
+    <input class="check" type="checkbox" id="Dessert" name="dessert" value="1">
+    <label class="checklabel" for="dessert"> dessert</label><br>
+    
+
+    <h5 class = "checkCat">Order Options</h5>
+    <input class="check" type="checkbox" id="Dine-In" name="dinein" value="1">
+    <label class="checklabel" for="dinein"> dine-in</label><br>
+
+    <input class="check" type="checkbox" id="Take-out" name="takeout" value="1">
+    <label class="checklabel" for="takeout"> take-out</label><br>
+
+    <input class="check" type="checkbox" id="Delivery" name="delivery" value="1">
+    <label class="checklabel" for="delivery"> delivery</label><br>
+
+
+    <h5 class = "checkCat">Dietary Restrictions</h5>
+    <input class="check" type="checkbox" id="Vegan" name="vegan" value="1">
+    <label class="checklabel" for="vegan"> vegan</label><br>
+
+    <input class="check" type="checkbox" id="Vegetarian" name="vegetarian" value="1">
+    <label class="checklabel" for="vegetarian"> vegetarian</label><br>
+
+    <input class="check" type="checkbox" id="Halal" name="halal" value="1">
+    <label class="checklabel" for="halal"> Halal</label><br>
+
+    <input class="check" type="checkbox" id="Kosher" name="kosher" value="1">
+    <label class="checklabel" for="kosher"> Kosher</label><br>
+
+
+    <h5 class = "checkCat">Social Relevance</h5>
+    <input class="check" type="checkbox" id="BIPOC Run" name="bipocrun" value="1">
+    <label class="checklabel" for="bipocrun"> BIPOC run</label><br>
+
+    <input class="check" type="checkbox" id="Women Run" name="womxnrun" value="1">
+    <label class="checklabel" for="womxnrun"> womxn run</label><br>
+
+
+    <!-- <h5 class = "checkCat">Award Level</h5>
+    <input class="check" type="checkbox" id="bronzeaward" name="bronzeaward" value="bronze">
+    <label class="checklabel" for="bronzeaward"> bronze</label><br>
+
+    <input class="check" type="checkbox" id="silveraward" name="silveraward" value="silver">
+    <label class="checklabel" for="silveraward"> silver</label><br>
+
+    <input class="check" type="checkbox" id="goldaward" name="goldaward" value="gold">
+    <label class="checklabel" for="goldaward"> gold</label><br> -->
+  </div>
+  <div id = "map"></div>
+</div>
+</body>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.min.js"></script>
+<link
+rel="stylesheet"
+href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.5.1/mapbox-gl-geocoder.css"
+type="text/css"
+/>
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+<script src="https://d3js.org/d3.v5.js"></script>
+<script type="text/javascript" src="https://unpkg.com/vue"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/gh/slowfood-usa/SFsnail@a44583b/index.js"></script> -->
+<script src="index.js"></script>
+
+</html>

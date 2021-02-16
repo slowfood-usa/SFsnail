@@ -1,0 +1,131 @@
+#map {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 600px
+  }
+  .url {
+    color:white
+  }
+  .tooltips {
+    background-color: #fff;
+    color: #000;
+    padding: .3rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    max-width:250px
+  }
+  
+  div.tooltip {	
+    font-family: "Helvetica";
+    font-size: 14px;
+    color: white;
+    position: absolute;			
+    text-align: left;			
+    padding: 0.5em;				
+    font: 0.8em;		
+    background: #de2221;	
+    border: 1.5px solid lightgrey;		
+    border-radius: 0.5em;			
+    pointer-events: none;	
+    max-width:230px;
+  }
+  
+  div.clictip {	
+    font-size:12px;
+    font-family: "Helvetica";
+    position: absolute;			
+    text-align: left;			
+    padding: 1em;				
+    font: 0.5em;		
+    background: #f3f3f2;	
+    border: 0.5px solid rgba(0, 0, 0, 0.4);		
+    border-radius: 0.1em;			
+    top: 0px;
+    right: 0px;
+    max-width: 263px;
+    min-height: 573px;
+    max-height: 573px;
+    overflow: auto;
+    z-index: 2;
+  }
+  
+  .restImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 100%; */
+    max-height: 200px;
+    max-width: 100%;
+  }
+  
+  .category {
+    display: flex;
+  }
+  
+  .tipFooter {
+    background-color:#DA2028;
+    color: #f3f3f2;
+    padding: 0.5em;	
+  }
+  
+  .tipHeader {
+    background-color:#DA2028;
+    color: #f3f3f2;
+    padding-bottom:10px
+  }
+  
+  .resName {
+    text-align: center; 
+    padding-top:15px; 
+    margin-bottom:0px;
+    color: #f3f3f2;
+  }
+
+#vizContainer {
+  display: flex;
+
+}
+
+.checkCat {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  color: #f3f3f2;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 10;
+  padding-left: .1vw;
+}
+
+.checkTitle {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  color: #f3f3f2;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  margin-top: 10;
+  padding-left: .1vw;
+}
+
+.checklabel {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 500;
+  /* font-size: 12px; */
+  color: #f3f3f2;
+  padding-left: 0px;
+
+}
+
+.check:checked{
+  background-color:#DA2028
+}
+
+#checkboxcontainer {
+  max-height: 600px;
+  overflow: auto;
+  background-color:#DA2028;
+  padding-left: 1vw;
+  
+}
