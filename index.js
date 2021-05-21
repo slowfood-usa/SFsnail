@@ -55,6 +55,7 @@ var app = new Vue({
                 }
             ).then(function(response){
                 // self.items = response.data.records
+                // console.log(self.items)
                 console.log(response.data.records)
                 loadAndShowData(response.data.records)
 
@@ -146,9 +147,11 @@ function showData(points) {
         .style('position', 'absolute')
         .style('z-index', 2);
 
+    // console.log("test")
+    // console.log(points.filter(d=>(d.geometry.coordinates[0]!=undefined)||(d.geometry.coordinates[0]!=undefined)))
     dots = svg
         .selectAll('circle')
-        .data(points)
+        .data(points.filter(d=>(d.geometry.coordinates[0]!=undefined)||(d.geometry.coordinates[0]!=undefined)))
         .join('circle')
         .attr('r', 7)
         // .attr("class", d=> d.properties.Award + d.properties.Vegetarian) // "vegeterian"
@@ -1011,15 +1014,7 @@ function click(d){
         .html(
         `<div class="tipHeader"><h2 style="color:#f3f3f2" class="resName"><b>${d.properties['Business Name']}</b></h2></div><br>
          <img class="restImg" src=${d.properties['Photo'][0]['thumbnails']['full']['url']} alt="" v-if="${d.properties['Photo']}"><br>
-         ${d.properties['Description']}<br><br>
-         <b>Award Level:</b> ${d.properties.Award}<br><br>
-         <div class="category"> <b>Times: </b> 
-         ${+d.properties['Breakfast']===1?" breakfast,":""}
-         ${+d.properties['Lunch']===1?" lunch,":""}
-         ${+d.properties['Dinner']===1?" dinner,":""}
-         ${+d.properties['Late Night']===1?" late night,":""}
-         ${+d.properties['Dessert']===1?" dessert":""}
-         </div>
+         ${d.properties['Description']}<br><br>         
          <div class="category"> <b>Order Options: </b> 
          ${+d.properties['Dine-In']===1?" dine-in,":""}
          ${+d.properties['Take-out']===1?" take-out,":""}
